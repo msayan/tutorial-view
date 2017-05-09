@@ -1,7 +1,6 @@
 package com.hololo.tutorial.sample;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.hololo.tutorial.library.Step;
@@ -13,7 +12,7 @@ public class MainActivity extends TutorialActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addFragment(new Step.Builder().setTitle("Otomatik Veri").setContent("GM Müzik Çalar şarkıcı/albüm resimlerini, tarzlarını otomatik olarak bulur ve gösterir*. \n\n\n(*)Bu özelliğin doğru çalışabilmesi için şarkı bilgilerinin düzgün olması gereklidir").setBackgroundColor(Color.parseColor("#FF0957")).setDrawable(R.drawable.ss_1).setSummary("Devam ederek nasıl yapacağınızı öğrenin").build());
+        addFragment(new Step.Builder().setTitle("Otomatik Veri").setContent("GM Müzik Çalar şarkıcı/albüm resimlerini, tarzlarını otomatik olarak bulur ve gösterir.* \n\n(*) Bu özelliğin doğru çalışabilmesi için şarkı bilgilerinin düzgün olması gereklidir").setBackgroundColor(Color.parseColor("#FF0957")).setDrawable(R.drawable.ss_1).setSummary("Devam ederek nasıl yapacağınızı öğrenin").build());
 
         addFragment(new Step.Builder().setTitle("Şarkıyı Seç").setContent("Şarkılarınızın listelendiği ana sekmeye geçin her şarkının yanındaki (⋮) dokunun ve açılan menüden Veri Düzenle'yi seçin").setBackgroundColor(Color.parseColor("#00D4BA")).setDrawable(R.drawable.ss_2).setSummary("Devam ederek nasıl güncelleyeceğinizi öğrenin").build());
 

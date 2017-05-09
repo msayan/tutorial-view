@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/containerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/containerLayout"
-    android:fitsSystemWindows="true"
     android:background="#FFF"
     android:clipToPadding="false"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <android.support.v4.view.ViewPager
@@ -14,19 +14,19 @@
         android:layout_height="match_parent" />
 
 
-<!--    <View
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:background="#20000000" />-->
+    <!--    <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="#20000000" />-->
 
     <RelativeLayout
         android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_gravity="bottom"
         android:background="@android:color/white"
         android:clipToPadding="false"
-        android:elevation="16dp">
+        android:elevation="24dp">
 
         <Button
             android:id="@+id/prev"

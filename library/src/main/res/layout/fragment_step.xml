@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="80dp">
+    android:paddingBottom="60dp">
 
     <com.hololo.tutorial.library.TutorialImageView
         android:id="@+id/image"
@@ -33,16 +33,16 @@
         android:gravity="center_horizontal"
         android:paddingEnd="32dp"
         android:paddingStart="32dp"
-        android:textSize="14sp"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus elementum sem congue laoreet. Sed pulvinar at purus quis aliquet. Quisque feugiat sed leo nec aliquet. In hac habitasse platea dictumst. Vestibulum enim sapien, gravida et tempus vel, feugiat in turpis. Fusce interdum elit et libero rhoncus dapibus"
-        android:textColor="#FFF" />
+        android:textColor="#FFF"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/summary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom|center_horizontal"
-        android:paddingBottom="16dp"
+        android:paddingBottom="8dp"
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit"

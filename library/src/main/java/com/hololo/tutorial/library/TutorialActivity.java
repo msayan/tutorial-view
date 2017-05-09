@@ -1,13 +1,9 @@
 package com.hololo.tutorial.library;
 
-import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.annotation.StringDef;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -87,6 +83,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void controlPosition(int position) {
+        notifyIndicator();
         if (position == steps.size() - 1) {
             next.setText(finishText);
             prev.setText(backText);
@@ -135,7 +132,12 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
 
         for (int i = 0; i < steps.size(); i++) {
             ImageView imageView = new ImageView(this);
-            imageView.setImageResource(R.drawable.ic_brightness_1_black_24dp);
+            imageView.setPadding(8, 8, 8, 8);
+            int drawable = R.drawable.circle_black;
+            if (i == currentItem)
+                drawable = R.drawable.circle_white;
+
+            imageView.setImageResource(drawable);
 
             final int finalI = i;
             imageView.setOnClickListener(new View.OnClickListener() {
