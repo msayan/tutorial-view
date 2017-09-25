@@ -31,7 +31,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
 
     private int currentItem;
 
-    private String backText, nextText, finishText, cancelText;
+    private String prevText, nextText, finishText, cancelText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initTexts() {
-        backText = "Back";
+        prevText = "Back";
         cancelText = "Cancel";
         finishText = "Finish";
         nextText = "Next";
@@ -86,12 +86,12 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         notifyIndicator();
         if (position == steps.size() - 1) {
             next.setText(finishText);
-            prev.setText(backText);
+            prev.setText(prevText);
         } else if (position == 0) {
             prev.setText(cancelText);
             next.setText(nextText);
         } else {
-            prev.setText(backText);
+            prev.setText(prevText);
             next.setText(nextText);
         }
 
@@ -179,8 +179,8 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
             pager.setCurrentItem(item, true);
     }
 
-    public void setBackText(String text) {
-        backText = text;
+    public void setPrevText(String text) {
+        prevText = text;
     }
 
     public void setNextText(String text) {
