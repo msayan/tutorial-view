@@ -12,12 +12,9 @@ public class MainActivity extends TutorialActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addFragment(new Step.Builder().setTitle("Otomatik Veri").setContent("GM Müzik Çalar şarkıcı/albüm resimlerini, tarzlarını otomatik olarak bulur ve gösterir.* \n\n(*) Bu özelliğin doğru çalışabilmesi için şarkı bilgilerinin düzgün olması gereklidir").setBackgroundColor(Color.parseColor("#FF0957")).setDrawable(R.drawable.ss_1).setSummary("Devam ederek nasıl yapacağınızı öğrenin").build());
-
-        addFragment(new Step.Builder().setTitle("Şarkıyı Seç").setContent("Şarkılarınızın listelendiği ana sekmeye geçin her şarkının yanındaki (⋮) dokunun ve açılan menüden Veri Düzenle'yi seçin").setBackgroundColor(Color.parseColor("#00D4BA")).setDrawable(R.drawable.ss_2).setSummary("Devam ederek nasıl güncelleyeceğinizi öğrenin").build());
-
-        addFragment(new Step.Builder().setTitle("Verileri Düzenle").setContent("Açılan pencerede Şarkı/Şarkıcı Adı, Albüm ve Tarz seçenekleri kolayca güncellenebilir").setBackgroundColor(Color.parseColor("#1098FE")).setDrawable(R.drawable.ss_3).setSummary("Devam ederek işlem sonucunu öğrenin").build());
-
-        addFragment(new Step.Builder().setTitle("Sonuç Harika!").setContent("Yaptığınız güncelleme sonrası albüm kapağı, sanatçının wiki bilgileri ve tarzlar ekranları harika görünüyor, bu işlemi diğer şarkılarınız için de yapmayı unutmayın").setBackgroundColor(Color.parseColor("#CA70F3")).setDrawable(R.drawable.ss_4).setSummary("Teşekkürler, iyi dinlemeler").build());
+        addFragment(new Step.Builder().setTitle(getString(R.string.automatic_data)).setContent(getString(R.string.gm_finds_photos)).setBackgroundColor(Color.parseColor("#FF0957")).setDrawable(R.drawable.ss_1).setSummary(getString(R.string.continue_and_learn)).build());
+        addFragment(new Step.Builder().setTitle(getString(R.string.choose_the_song)).setContent(getString(R.string.swap_to_the_tab)).setBackgroundColor(Color.parseColor("#00D4BA")).setDrawable(R.drawable.ss_2).setSummary(getString(R.string.continue_and_update)).build());
+        addFragment(new Step.Builder().setTitle(getString(R.string.edit_data)).setContent(getString(R.string.update_easily)).setBackgroundColor(Color.parseColor("#1098FE")).setDrawable(R.drawable.ss_3).setSummary(getString(R.string.continue_and_result)).build());
+        addFragment(new Step.Builder().setTitle(getString(R.string.result_awesome)).setContent(getString(R.string.after_updating)).setBackgroundColor(Color.parseColor("#CA70F3")).setDrawable(R.drawable.ss_4).setSummary(getString(R.string.thank_you)).build());
     }
 }

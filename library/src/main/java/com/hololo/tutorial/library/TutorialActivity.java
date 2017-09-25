@@ -153,6 +153,15 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
+    public void onBackPressed() {
+        if (currentItem == 0) {
+            super.onBackPressed();
+        } else {
+            changeFragment(false);
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.next) {
             changeFragment(true);
