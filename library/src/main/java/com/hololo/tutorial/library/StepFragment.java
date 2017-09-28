@@ -1,27 +1,21 @@
 package com.hololo.tutorial.library;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class StepFragment extends Fragment {
 
     private TextView title;
     private TextView content;
     private TextView summary;
-    private TutorialImageView imageView;
+    private ImageView imageView;
     private LinearLayout layout;
 
     private Step step;
@@ -64,7 +58,7 @@ public class StepFragment extends Fragment {
         title = (TextView) view.findViewById(R.id.title);
         content = (TextView) view.findViewById(R.id.content);
         summary = (TextView) view.findViewById(R.id.summary);
-        imageView = (TutorialImageView) view.findViewById(R.id.image);
+        imageView = (ImageView) view.findViewById(R.id.image);
         layout = (LinearLayout) view.findViewById(R.id.container);
     }
 
