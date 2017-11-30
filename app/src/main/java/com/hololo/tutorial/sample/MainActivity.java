@@ -2,6 +2,7 @@ package com.hololo.tutorial.sample;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.hololo.tutorial.library.Step;
 import com.hololo.tutorial.library.TutorialActivity;
@@ -16,5 +17,11 @@ public class MainActivity extends TutorialActivity {
         addFragment(new Step.Builder().setTitle(getString(R.string.choose_the_song)).setContent(getString(R.string.swap_to_the_tab)).setBackgroundColor(Color.parseColor("#00D4BA")).setDrawable(R.drawable.ss_2).setSummary(getString(R.string.continue_and_update)).build());
         addFragment(new Step.Builder().setTitle(getString(R.string.edit_data)).setContent(getString(R.string.update_easily)).setBackgroundColor(Color.parseColor("#1098FE")).setDrawable(R.drawable.ss_3).setSummary(getString(R.string.continue_and_result)).build());
         addFragment(new Step.Builder().setTitle(getString(R.string.result_awesome)).setContent(getString(R.string.after_updating)).setBackgroundColor(Color.parseColor("#CA70F3")).setDrawable(R.drawable.ss_4).setSummary(getString(R.string.thank_you)).build());
+    }
+
+    @Override
+    public void finishTutorial() {
+        Toast.makeText(this, "Tutorial finished", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

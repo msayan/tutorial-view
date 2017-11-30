@@ -21,13 +21,34 @@ public class MainActivity extends TutorialActivity {
         addFragment(new Step.Builder().setTitle("This is header")
                                       .setContent("This is content")
                                       .setBackgroundColor(Color.parseColor("#FF0957")) // int background color
-                                      .setDrawable(R.drawable.ss_1) // int top drawable
+                                       .setDrawable(R.drawable.ss_1) // int top drawable
                                       .setSummary("This is summary") 
                                       .build());
     }
 }
 
 ```
+
+Some helper methods
+```java
+
+setPrevText(text); // Previous button text
+setNextText(text); // Next button text
+setFinishText(text); // Finish button text
+setCancelText(text); // Cancel button text
+
+```
+
+If you want to open another activity on tutorial finish
+```java
+
+    @Override
+    public void finishTutorial() {
+        // Your implementation
+    }
+
+```
+
 
 ## Download
 
@@ -50,7 +71,7 @@ Add it in your root build.gradle at the end of repositories:
 ```groovy
 
 	dependencies {
-		compile 'com.github.msayan:tutorial-view:v1.0.0'
+		compile 'com.github.msayan:tutorial-view:v1.0.2'
 	}
   
 ```

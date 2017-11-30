@@ -183,9 +183,13 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         }
 
         if (item < 0 || item == steps.size()) {
-            finish();
+            finishTutorial();
         } else
             pager.setCurrentItem(item, true);
+    }
+
+    public void finishTutorial() {
+        finish();
     }
 
     public void setPrevText(String text) {
