@@ -1,11 +1,15 @@
 package com.hololo.tutorial.library;
 
+import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -31,14 +35,19 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
 
     private int currentItem;
 
-    private String prevText, nextText, finishText, cancelText;
+    private String prevText, nextText, finishText, cancelText, givePermissionText;
+    private int selectedIndicator = R.drawable.circle_black, indicator = R.drawable.circle_white;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(R.style.TutorialStyle);
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_tutorial);
+
+        init();
+    }
+
+    private void init() {
         steps = new ArrayList<>();
         initTexts();
         initViews();
@@ -50,6 +59,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         cancelText = "Cancel";
         finishText = "Finish";
         nextText = "Next";
+        givePermissionText = "Give";
     }
 
     private void initAdapter() {
@@ -84,6 +94,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
 
     private void controlPosition(int position) {
         notifyIndicator();
+
         if (position == steps.size() - 1) {
             next.setText(finishText);
             prev.setText(prevText);
@@ -95,8 +106,29 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
             next.setText(nextText);
         }
 
+        if (controlPermission()) {
+            prepareNormalView();
+        } else {
+            preparePermissionView();
+        }
+
         containerLayout.setBackgroundColor(steps.get(position).getBackgroundColor());
         buttonContainer.setBackgroundColor(steps.get(position).getBackgroundColor());
+    }
+
+    private void prepareNormalView() {
+        pager.setOnTouchListener(null);
+    }
+
+    private void preparePermissionView() {
+        next.setText(givePermissionText);
+
+        pager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
     }
 
     private void initViews() {
@@ -133,9 +165,9 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         for (int i = 0; i < steps.size(); i++) {
             ImageView imageView = new ImageView(this);
             imageView.setPadding(8, 8, 8, 8);
-            int drawable = R.drawable.circle_black;
+            int drawable = indicator;
             if (i == currentItem)
-                drawable = R.drawable.circle_white;
+                drawable = selectedIndicator;
 
             imageView.setImageResource(drawable);
 
@@ -161,17 +193,36 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    @SuppressLint("NewApi")
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.next) {
-            changeFragment(true);
+            if (controlPermission())
+                changeFragment(true);
+            else
+                requestPermissions(((PermissionStep) steps.get(pager.getCurrentItem())).getPermissions(), 1903);
         } else if (v.getId() == R.id.prev) {
             changeFragment(false);
         }
     }
 
     private void changeFragment(int position) {
-        pager.setCurrentItem(position, true);
+        if (controlPermission())
+            pager.setCurrentItem(position, true);
+    }
+
+    private boolean controlPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && steps.get(pager.getCurrentItem()) instanceof PermissionStep) {
+
+            for (String permission : ((PermissionStep) steps.get(pager.getCurrentItem())).getPermissions()) {
+                int permissionResult = checkSelfPermission(permission);
+
+                if (permissionResult != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private void changeFragment(boolean isNext) {
@@ -208,4 +259,20 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         cancelText = text;
     }
 
+    public void setIndicatorSelected(int drawable) {
+        selectedIndicator = drawable;
+    }
+
+    public void setIndicator(int drawable) {
+        indicator = drawable;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            changeFragment(true);
+        }
+    }
 }

@@ -2,6 +2,8 @@
     <string name="app_name">Sample</string>
 
     <string name="automatic_data">Automatic Data</string>
+    <string name="permission_title">Grant Access</string>
+    <string name="permission_detail">Give Music Player access to files</string>
     <string name="choose_the_song">Choose the song</string>
     <string name="edit_data">Edit Data</string>
     <string name="result_awesome">Result is awesome!</string>

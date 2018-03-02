@@ -16,7 +16,9 @@ public class StepPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return StepFragment.createFragment(stepList.get(position));
+        Step step = stepList.get(position);
+
+        return StepFragment.createFragment(step);
     }
 
     @Override

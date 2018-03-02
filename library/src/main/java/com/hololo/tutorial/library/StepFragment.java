@@ -2,7 +2,6 @@ package com.hololo.tutorial.library;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class StepFragment extends Fragment {
+public class StepFragment extends StepView {
 
     private TextView title;
     private TextView content;
@@ -18,7 +17,6 @@ public class StepFragment extends Fragment {
     private ImageView imageView;
     private LinearLayout layout;
 
-    private Step step;
 
     static StepFragment createFragment(Step step) {
         StepFragment fragment = new StepFragment();
