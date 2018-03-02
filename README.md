@@ -24,6 +24,14 @@ public class MainActivity extends TutorialActivity {
                                        .setDrawable(R.drawable.ss_1) // int top drawable
                                       .setSummary("This is summary") 
                                       .build());
+        // Permission Step
+        addFragment(new PermissionStep.Builder().setTitle(getString(R.string.permission_title))
+                                                .setContent(getString(R.string.permission_detail))
+                                                .setBackgroundColor(Color.parseColor("#FF0957"))
+                                                .setDrawable(R.drawable.ss_1)
+                                                .setSummary(getString(R.string.continue_and_learn))
+                                                .setPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
+                                                .build());
     }
 }
 
@@ -36,6 +44,8 @@ setPrevText(text); // Previous button text
 setNextText(text); // Next button text
 setFinishText(text); // Finish button text
 setCancelText(text); // Cancel button text
+setIndicatorSelected(int drawable); // Indicator drawable when selected
+setIndicator(int drawable); // Indicator drawable
 
 ```
 
@@ -71,7 +81,7 @@ Add it in your root build.gradle at the end of repositories:
 ```groovy
 
 	dependencies {
-		compile 'com.github.msayan:tutorial-view:v1.0.3'
+		compile 'com.github.msayan:tutorial-view:v1.0.4'
 	}
   
 ```
