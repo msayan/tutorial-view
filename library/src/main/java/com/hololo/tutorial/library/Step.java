@@ -5,32 +5,22 @@ import android.os.Parcelable;
 
 public class Step implements Parcelable {
 
-    public static final Parcelable.Creator<Step> CREATOR = new Parcelable.Creator<Step>() {
-        @Override
-        public Step createFromParcel(Parcel source) {
-            return new Step(source);
-        }
-
-        @Override
-        public Step[] newArray(int size) {
-            return new Step[size];
-        }
-    };
     private String title;
     private String content;
     private String summary;
     private int drawable;
     private int backgroundColor;
+    private int viewType;
 
     public Step() {
     }
 
-    protected Step(Parcel in) {
-        this.title = in.readString();
-        this.content = in.readString();
-        this.summary = in.readString();
-        this.drawable = in.readInt();
-        this.backgroundColor = in.readInt();
+    public int getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(int viewType) {
+        this.viewType = viewType;
     }
 
     public String getTitle() {
@@ -73,20 +63,6 @@ public class Step implements Parcelable {
         this.summary = summary;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.title);
-        dest.writeString(this.content);
-        dest.writeString(this.summary);
-        dest.writeInt(this.drawable);
-        dest.writeInt(this.backgroundColor);
-    }
-
     public static class Builder {
 
         private Step step;
@@ -123,5 +99,47 @@ public class Step implements Parcelable {
             step.backgroundColor = backgroundColor;
             return this;
         }
+
+        public Builder setView(int view) {
+            step.viewType = view;
+            return this;
+        }
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.title);
+        dest.writeString(this.content);
+        dest.writeString(this.summary);
+        dest.writeInt(this.drawable);
+        dest.writeInt(this.backgroundColor);
+        dest.writeInt(this.viewType);
+    }
+
+    protected Step(Parcel in) {
+        this.title = in.readString();
+        this.content = in.readString();
+        this.summary = in.readString();
+        this.drawable = in.readInt();
+        this.backgroundColor = in.readInt();
+        this.viewType = in.readInt();
+    }
+
+    public static final Creator<Step> CREATOR = new Creator<Step>() {
+        @Override
+        public Step createFromParcel(Parcel source) {
+            return new Step(source);
+        }
+
+        @Override
+        public Step[] newArray(int size) {
+            return new Step[size];
+        }
+    };
 }

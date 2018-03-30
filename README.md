@@ -46,6 +46,7 @@ setFinishText(text); // Finish button text
 setCancelText(text); // Cancel button text
 setIndicatorSelected(int drawable); // Indicator drawable when selected
 setIndicator(int drawable); // Indicator drawable
+setGivePermissionText(String text); // Permission button text
 
 ```
 
@@ -58,6 +59,16 @@ If you want to open another activity on tutorial finish
     }
 
 ```
+
+
+
+##### If you want change design of view you need following items
+* 1 Container layout with id of container
+* 3 Text view which is for Title id of title, Content id of content, Summary id of summary
+* 1 Image view with id of image
+
+
+
 
 
 ## Download
@@ -81,7 +92,7 @@ Add it in your root build.gradle at the end of repositories:
 ```groovy
 
 	dependencies {
-		compile 'com.github.msayan:tutorial-view:v1.0.4'
+		compile 'com.github.msayan:tutorial-view:v1.0.5'
 	}
   
 ```

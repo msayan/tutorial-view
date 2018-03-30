@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class StepFragment extends StepView {
@@ -15,7 +14,7 @@ public class StepFragment extends StepView {
     private TextView content;
     private TextView summary;
     private ImageView imageView;
-    private LinearLayout layout;
+    private View layout;
 
 
     static StepFragment createFragment(Step step) {
@@ -36,7 +35,9 @@ public class StepFragment extends StepView {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_step, container, false);
+        int layout = step.getViewType() > -1 ? step.getViewType() : R.layout.fragment_step;
+
+        View view = inflater.inflate(layout, container, false);
 
         initViews(view);
         initData();
@@ -45,19 +46,30 @@ public class StepFragment extends StepView {
     }
 
     private void initData() {
-        title.setText(step.getTitle());
-        content.setText(step.getContent());
-        summary.setText(step.getSummary());
-        imageView.setImageResource(step.getDrawable());
-        layout.setBackgroundColor(step.getBackgroundColor());
+        if (title != null) {
+            title.setText(step.getTitle());
+        }
+        if (content != null) {
+            content.setText(step.getContent());
+        }
+        if (summary != null) {
+            summary.setText(step.getSummary());
+        }
+        if (imageView != null) {
+            imageView.setImageResource(step.getDrawable());
+        }
+
+        if (layout != null) {
+            layout.setBackgroundColor(step.getBackgroundColor());
+        }
     }
 
     private void initViews(View view) {
-        title = (TextView) view.findViewById(R.id.title);
-        content = (TextView) view.findViewById(R.id.content);
-        summary = (TextView) view.findViewById(R.id.summary);
-        imageView = (ImageView) view.findViewById(R.id.image);
-        layout = (LinearLayout) view.findViewById(R.id.container);
+        title = view.findViewById(R.id.title);
+        content = view.findViewById(R.id.content);
+        summary = view.findViewById(R.id.summary);
+        imageView = view.findViewById(R.id.image);
+        layout = view.findViewById(R.id.container);
     }
 
 }

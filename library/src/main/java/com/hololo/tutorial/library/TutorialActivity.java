@@ -259,6 +259,10 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         cancelText = text;
     }
 
+    public void setGivePermissionText(String text) {
+        givePermissionText = text;
+    }
+
     public void setIndicatorSelected(int drawable) {
         selectedIndicator = drawable;
     }
