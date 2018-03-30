@@ -35,7 +35,7 @@ public class StepFragment extends StepView {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        int layout = step.getViewType() > -1 ? step.getViewType() : R.layout.fragment_step;
+        int layout = step.getViewType() > 0 ? step.getViewType() : R.layout.fragment_step;
 
         View view = inflater.inflate(layout, container, false);
 
