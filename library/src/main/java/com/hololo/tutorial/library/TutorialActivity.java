@@ -22,7 +22,7 @@ import android.widget.RelativeLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TutorialActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class TutorialActivity extends AppCompatActivity implements View.OnClickListener,CurrentFragmentListener {
 
     private List<Step> steps;
     private StepPagerAdapter adapter;
@@ -32,6 +32,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
     private LinearLayout indicatorLayout;
     private FrameLayout containerLayout;
     private RelativeLayout buttonContainer;
+    private CurrentFragmentListener currentFragmentListener;
 
     private int currentItem;
 
@@ -43,7 +44,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         setTheme(R.style.TutorialStyle);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
-
+        currentFragmentListener = this;
         init();
     }
 
@@ -74,6 +75,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onPageSelected(int position) {
                 currentItem = position;
+                currentFragmentListener.currentFragmentPosition(position);
                 controlPosition(position);
             }
 
@@ -279,4 +281,6 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
             changeFragment(true);
         }
     }
+
+
 }

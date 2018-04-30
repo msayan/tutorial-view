@@ -28,4 +28,9 @@ public class MainActivity extends TutorialActivity {
         Toast.makeText(this, "Tutorial finished", Toast.LENGTH_SHORT).show();
         finish();
     }
+
+    @Override
+    public void currentFragmentPosition(int position) {
+        Toast.makeText(this,"Position : " + position,Toast.LENGTH_SHORT).show();
+    }
 }
