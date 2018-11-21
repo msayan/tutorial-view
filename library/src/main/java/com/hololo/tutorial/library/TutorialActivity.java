@@ -247,6 +247,7 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
 
     public void setPrevText(String text) {
         prevText = text;
+        controlPosition(0);
     }
 
     public void setNextText(String text) {
