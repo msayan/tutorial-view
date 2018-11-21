@@ -22,7 +22,7 @@ import android.widget.RelativeLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class TutorialActivity extends AppCompatActivity implements View.OnClickListener,CurrentFragmentListener {
+public abstract class TutorialActivity extends AppCompatActivity implements View.OnClickListener, CurrentFragmentListener {
 
     private List<Step> steps;
     private StepPagerAdapter adapter;
@@ -251,18 +251,22 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
 
     public void setNextText(String text) {
         nextText = text;
+        controlPosition(0);
     }
 
     public void setFinishText(String text) {
         finishText = text;
+        controlPosition(0);
     }
 
     public void setCancelText(String text) {
         cancelText = text;
+        controlPosition(0);
     }
 
     public void setGivePermissionText(String text) {
         givePermissionText = text;
+        controlPosition(0);
     }
 
     public void setIndicatorSelected(int drawable) {
