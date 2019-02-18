@@ -113,9 +113,10 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
         } else {
             preparePermissionView();
         }
-
-        containerLayout.setBackgroundColor(steps.get(position).getBackgroundColor());
-        buttonContainer.setBackgroundColor(steps.get(position).getBackgroundColor());
+        if (!steps.isEmpty()) {
+            containerLayout.setBackgroundColor(steps.get(position).getBackgroundColor());
+            buttonContainer.setBackgroundColor(steps.get(position).getBackgroundColor());
+        }
     }
 
     private void prepareNormalView() {
@@ -214,7 +215,7 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
     }
 
     private boolean controlPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && steps.get(pager.getCurrentItem()) instanceof PermissionStep) {
+        if (!steps.isEmpty() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && steps.get(pager.getCurrentItem()) instanceof PermissionStep) {
 
             for (String permission : ((PermissionStep) steps.get(pager.getCurrentItem())).getPermissions()) {
                 int permissionResult = checkSelfPermission(permission);
