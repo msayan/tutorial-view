@@ -72,4 +72,12 @@ public class StepFragment extends StepView {
         layout = view.findViewById(R.id.container);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        if (imageView != null) {
+            imageView.setImageDrawable(null);
+        }
+    }
 }
