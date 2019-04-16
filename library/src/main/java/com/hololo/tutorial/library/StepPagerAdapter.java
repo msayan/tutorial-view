@@ -3,10 +3,11 @@ package com.hololo.tutorial.library;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.List;
 
-public class StepPagerAdapter extends FragmentPagerAdapter {
+public class StepPagerAdapter extends FragmentStatePagerAdapter {
     private List<Step> stepList;
 
     public StepPagerAdapter(FragmentManager fm, List<Step> stepList) {
